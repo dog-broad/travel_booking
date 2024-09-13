@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Wanderlust{% endblock %}
+
+{% block content %}
+    <header class="text-center my-5">
+        <h1 class="display-4">Discover Your Next Adventure</h1>
+        <p class="lead">Find the best travel options and book your next journey with ease.</p>
+        <a href="{% url 'travel_options' %}" class="btn btn-primary btn-lg">
+            <i class="fas fa-search me-2"></i>Explore Now
+        </a>
+    </header>
+    <section class="text-center my-5">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Diverse Options</h5>
+                        <p class="card-text">Choose from a wide range of travel options including flights, trains, and buses.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Competitive Prices</h5>
+                        <p class="card-text">Get the best deals and offers on your travel bookings.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Secure Booking</h5>
+                        <p class="card-text">Enjoy a seamless and secure booking experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

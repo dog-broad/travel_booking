@@ -1,14 +1,32 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Welcome Back{% endblock %}
 
 {% block content %}
-    <h1 class="text-2xl font-bold mb-4">Login</h1>
-    <form method="post" class="bg-white p-6 rounded shadow">
-        {% csrf_token %}
-        <p class="text-red-500">{{ error }}</p>
-        <input type="text" name="username" placeholder="Username" class="border p-2 mb-4 w-full">
-        <input type="password" name="password" placeholder="Password" class="border p-2 mb-4 w-full">
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Login</button>
-    </form>
+    <h1 class="text-center mb-4 section-title">Continue Your Adventure</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6 fade-in-up">
+            <div class="card">
+                <div class="card-body p-5">
+                    <form method="post">
+                        {% csrf_token %}
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endif %}
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-3">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

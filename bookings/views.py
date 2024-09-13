@@ -12,7 +12,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('travel_options')
     else:
         form = UserRegistrationForm()
     return render(request, 'register.html', {'form': form})
@@ -24,14 +24,14 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('index')
+            return redirect('travel_options')
         else:
             return render(request, 'login.html', {'error': 'Invalid credentials'})
     return render(request, 'login.html')
 
 def user_logout(request):
     logout(request)
-    return redirect('index')
+    return redirect('landing')
 
 @login_required
 def profile(request):
@@ -80,3 +80,6 @@ def cancel_booking(request, booking_id):
     travel_option.available_seats += booking.number_of_seats
     travel_option.save()
     return redirect('view_bookings')
+
+def landing(request):
+    return render(request, 'landing.html')

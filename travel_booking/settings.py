@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bookings',
-    'theme',
     'tailwind',
     'theme',  # Add Tailwind's app
     'django_browser_reload',  # For auto-reload in development
@@ -84,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'travel_booking_db',
         'USER': 'root',
-        'PASSWORD': 'yourpassword',
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -109,6 +108,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -126,3 +129,5 @@ STATICFILES_DIRS = [BASE_DIR / 'theme' / 'static_src']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TAILWIND_APP_NAME = 'theme'
+
+NPM_BIN_PATH = 'C:\\Program Files\\nodejs\\npm.cmd'

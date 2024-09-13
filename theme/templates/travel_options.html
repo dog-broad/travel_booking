@@ -1,22 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}Travel Options{% endblock %}
+{% block title %}Discover Your Next Destination{% endblock %}
 
 {% block content %}
-    <h1 class="text-2xl font-bold mb-4">Available Travel Options</h1>
-    <div class="bg-white p-6 rounded shadow">
+    <h1 class="text-center mb-4 section-title">Explore Travel Options</h1>
+    <div class="row">
         {% for option in options %}
-            <div class="border-b mb-4 pb-4">
-                <h2 class="text-xl font-semibold">{{ option.type }}</h2>
-                <p><strong>From:</strong> {{ option.source }}</p>
-                <p><strong>To:</strong> {{ option.destination }}</p>
-                <p><strong>Date and Time:</strong> {{ option.date_time }}</p>
-                <p><strong>Price:</strong> ${{ option.price }}</p>
-                <p><strong>Available Seats:</strong> {{ option.available_seats }}</p>
-                <a href="{% url 'book_ticket' option.travel_id %}" class="bg-blue-500 text-white px-4 py-2 rounded">Book Now</a>
+            <div class="col-md-4 mb-4 fade-in-up">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <h5 class="card-title mb-3">{{ option.type }}</h5>
+                        <p class="card-text"><i class="fas fa-plane-departure me-2 text-primary"></i>From: {{ option.source }}</p>
+                        <p class="card-text"><i class="fas fa-plane-arrival me-2 text-primary"></i>To: {{ option.destination }}</p>
+                        <p class="card-text"><i class="far fa-clock me-2 text-primary"></i>{{ option.date_time }}</p>
+                        <p class="card-text"><i class="fas fa-tag me-2 text-primary"></i>${{ option.price }}</p>
+                        <p class="card-text"><i class="fas fa-chair me-2 text-primary"></i>{{ option.available_seats }} seats available</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 p-4">
+                        <a href="{% url 'book_ticket' option.travel_id %}" class="btn btn-primary w-100">
+                            <i class="fas fa-ticket-alt me-2"></i>Book Now
+                        </a>
+                    </div>
+                </div>
             </div>
         {% empty %}
-            <p>No travel options available.</p>
+            <p class="text-center">No travel options available at the moment. Check back soon for exciting new destinations!</p>
         {% endfor %}
     </div>
 {% endblock %}
