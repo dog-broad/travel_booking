@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Ticket{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold mb-4">Book Ticket</h1>
+    <div class="bg-white p-6 rounded shadow">
+        <h2 class="text-xl font-semibold">{{ travel_option.type }} - {{ travel_option.source }} to {{ travel_option.destination }}</h2>
+        <p><strong>Date and Time:</strong> {{ travel_option.date_time }}</p>
+        <p><strong>Price per Seat:</strong> ${{ travel_option.price }}</p>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Confirm Booking</button>
+        </form>
+    </div>
+{% endblock %}

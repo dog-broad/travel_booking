@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Travel Options{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold mb-4">Available Travel Options</h1>
+    <div class="bg-white p-6 rounded shadow">
+        {% for option in options %}
+            <div class="border-b mb-4 pb-4">
+                <h2 class="text-xl font-semibold">{{ option.type }}</h2>
+                <p><strong>From:</strong> {{ option.source }}</p>
+                <p><strong>To:</strong> {{ option.destination }}</p>
+                <p><strong>Date and Time:</strong> {{ option.date_time }}</p>
+                <p><strong>Price:</strong> ${{ option.price }}</p>
+                <p><strong>Available Seats:</strong> {{ option.available_seats }}</p>
+                <a href="{% url 'book_ticket' option.travel_id %}" class="bg-blue-500 text-white px-4 py-2 rounded">Book Now</a>
+            </div>
+        {% empty %}
+            <p>No travel options available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
