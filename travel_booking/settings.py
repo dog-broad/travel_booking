@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tailwind',
-    'theme',
     'bookings',
+    'theme',
+    'tailwind',
+    'theme',  # Add Tailwind's app
+    'django_browser_reload',  # For auto-reload in development
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'travel_booking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'theme' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,13 +73,6 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',  # Keep default
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
-
-SITE_ID = 1
-
 WSGI_APPLICATION = 'travel_booking.wsgi.application'
 
 
@@ -86,16 +81,16 @@ WSGI_APPLICATION = 'travel_booking.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'travel_booking_db',
+        'USER': 'root',
+        'PASSWORD': 'yourpassword',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
+AUTH_PASSWORD_VALIDATORS = [    
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -120,18 +115,14 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+STATICFILES_DIRS = [BASE_DIR / 'theme' / 'static_src']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Tailwind settings
 TAILWIND_APP_NAME = 'theme'
