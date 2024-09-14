@@ -45,6 +45,10 @@ def profile(request):
     
     # Fetch booking history
     bookings = Booking.objects.filter(user=request.user)
+
+    # Add a field created_date to each booking
+    for booking in bookings:
+        booking.created_at = booking.booking_date.date()
     
     # Render the profile page with form and booking history
     return render(request, 'profile.html', {'form': form, 'bookings': bookings})
