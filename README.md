@@ -1,6 +1,8 @@
 # 🧳 Travel Booking Application
 
-Welcome to the **Travel Booking Application**! This Django-based project was developed as part of an assignment for the Software Engineer Intern position at Travel Lykke.
+Welcome to **Wanderlust**, a comprehensive travel booking application! This Django-based project was developed as part of my assignment for the Software Engineer Intern position I am applying to **Travel Lykke**. I’ve named the project **Wanderlust** to capture the spirit of adventure and exploration. 
+
+Thank you for exploring the application!
 
 ## 🌟 Project Motivation
 
