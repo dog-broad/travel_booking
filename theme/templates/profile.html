@@ -6,7 +6,8 @@
     <h1 class="text-center mb-4 section-title">Your Travel Dashboard</h1>
     <div class="row justify-content-center">
         <div class="col-md-8 fade-in-up">
-            <div class="card">
+            <!-- Profile Update Form -->
+            <div class="card mb-4">
                 <div class="card-body p-5">
                     <form method="post">
                         {% csrf_token %}
@@ -25,18 +26,38 @@
                     </form>
                 </div>
             </div>
-            <div class="mt-4">
-                <div class="card">
-                    <div class="card-body p-5">
-                        <h5 class="card-title">View Bookings</h5>
-                        <p class="card-text">View your upcoming and past travels.</p>
-                        <a href="{% url 'view_bookings' %}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-right me-2"></i>View Bookings
-                        </a>
-                    </div>
+
+            <!-- View Bookings Button -->
+            <div class="card mb-4">
+                <div class="card-body p-5">
+                    <h5 class="card-title">View Your Bookings</h5>
+                    <p class="card-text">Check your upcoming and past travels.</p>
+                    <a href="{% url 'view_bookings' %}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-right me-2"></i>View Bookings
+                    </a>
+                </div>
+            </div>
+
+            <!-- Booking History Section -->
+            <div class="card">
+                <div class="card-body p-5">
+                    <h5 class="card-title">Booking History</h5>
+                    {% if bookings %}
+                        <ul class="list-group">
+                            {% for booking in bookings %}
+                                <li class="list-group-item">
+                                    <strong>{{ booking.travel_option }}</strong>
+                                    <p>Seats: {{ booking.number_of_seats }} | Total Price: ₹{{ booking.total_price }}</p>
+                                    <p>Status: {{ booking.status }}</p>
+                                    <p>Date: {{ booking.created_at }}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>You have no bookings yet.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
-
