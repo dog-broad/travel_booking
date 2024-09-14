@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)%ghog@&fal*a-ymopqf&efws)@apam&7aa^+t$+23mhs*z4&w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,9 +82,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'travel_booking_db',
-        'USER': 'root',
+        'USER': 'dbmasteruser',
         'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': 'ls-d14d1ea659337c9049a1c7d8df65a8858777b74e.clqw8gsew511.ap-south-1.rds.amazonaws.com',
         'PORT': '3306',
     }
 }
