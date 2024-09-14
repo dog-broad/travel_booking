@@ -1,1 +1,4 @@
 Django==4.2.11
+django-browser-reload==1.15.0
+django-tailwind==3.8.0
+mysqlclient==2.2.4

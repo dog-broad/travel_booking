@@ -13,6 +13,10 @@ This project was created to showcase proficiency in Django, building functional 
 - **Booking Management**: Make, view, and cancel bookings.
 - **Responsive Design**: Enhanced with Bootstrap for a clean, modern look.
 
+## 🛠️ Deployment
+
+This application is hosted on AWS Lightsail at [15.207.196.96:8000](http://15.207.196.96:8000). Unfortunately, I couldn't afford a proper domain name, so I used the free IP address given by AWS Lightsail. The free domain name options were not desirable, so I went let the IP address be.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
