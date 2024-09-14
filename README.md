@@ -131,7 +131,7 @@ This application is hosted on AWS Lightsail at [15.207.196.96:8000](http://15.20
 
 - [x] **Advanced Search**: Implement advanced search for travel options.
 - [ ] **Payment Integration**: Add payment gateway support for bookings.
-- [ ] **User Dashboard**: Enhance user profile with booking history and preferences.
+- [x] **User Dashboard**: Enhance user profile with booking history and preferences.
 
 ## 📝 License
 
