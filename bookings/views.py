@@ -45,7 +45,16 @@ def profile(request):
     return render(request, 'profile.html', {'form': form})
 
 def travel_options(request):
+    query_params = request.GET
     options = TravelOption.objects.all()
+
+    if 'type' in query_params:
+        options = options.filter(type__icontains=query_params['type'])
+    if 'source' in query_params:
+        options = options.filter(source__icontains=query_params['source'])
+    if 'destination' in query_params:
+        options = options.filter(destination__icontains=query_params['destination'])
+
     return render(request, 'travel_options.html', {'options': options})
 
 @login_required

@@ -4,6 +4,23 @@
 
 {% block content %}
     <h1 class="text-center mb-4 section-title">Explore Travel Options</h1>
+
+    <!-- Search Form -->
+    <form method="get" class="mb-4">
+        <div class="row">
+            <div class="col-md-4 mb-2">
+                <input type="text" name="type" class="form-control" placeholder="Type (e.g., Flight)" value="{{ request.GET.type }}">
+            </div>
+            <div class="col-md-4 mb-2">
+                <input type="text" name="source" class="form-control" placeholder="Source (e.g., Mumbai)" value="{{ request.GET.source }}">
+            </div>
+            <div class="col-md-4 mb-2">
+                <input type="text" name="destination" class="form-control" placeholder="Destination (e.g., New Delhi)" value="{{ request.GET.destination }}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
     <div class="row">
         {% for option in options %}
             <div class="col-md-4 mb-4 fade-in-up">
@@ -13,7 +30,7 @@
                         <p class="card-text"><i class="fas fa-plane-departure me-2 text-primary"></i>From: {{ option.source }}</p>
                         <p class="card-text"><i class="fas fa-plane-arrival me-2 text-primary"></i>To: {{ option.destination }}</p>
                         <p class="card-text"><i class="far fa-clock me-2 text-primary"></i>{{ option.date_time }}</p>
-                        <p class="card-text"><i class="fas fa-tag me-2 text-primary"></i>${{ option.price }}</p>
+                        <p class="card-text"><i class="fas fa-tag me-2 text-primary"></i>₹{{ option.price }}</p>
                         <p class="card-text"><i class="fas fa-chair me-2 text-primary"></i>{{ option.available_seats }} seats available</p>
                     </div>
                     <div class="card-footer bg-white border-top-0 p-4">
